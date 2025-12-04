@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- Snow / decorations layer -->
     <div class="snow"></div>
 
     <main class="container">
@@ -19,29 +18,68 @@
         </p>
       </header>
 
+      <!-- AUTH PANEL: email register / login -->
+      <section class="card auth-panel">
+        <h2>Akun</h2>
+        <div class="auth-forms">
+          <div class="auth-left">
+            <input
+              id="authName"
+              placeholder="Nama (opsional untuk tampilkan)"
+            />
+            <input id="authEmail" placeholder="Email" type="email" required />
+            <input
+              id="authPass"
+              placeholder="Password"
+              type="password"
+              required
+            />
+            <div style="display: flex; gap: 8px; margin-top: 8px">
+              <button id="btnRegister" class="primary">Buat Akun</button>
+              <button id="btnLogin" class="ghost">Login</button>
+            </div>
+          </div>
+          <div class="auth-right">
+            <div id="userInfo" class="muted">Belum login</div>
+            <div style="margin-top: 8px">
+              <button id="btnLogout" class="ghost hidden">Logout</button>
+            </div>
+          </div>
+        </div>
+        <small class="hint"
+          >Akun disimpan di browser (demo). Gunakan email & password untuk
+          login.</small
+        >
+      </section>
+
+      <!-- Composer: create new message -->
       <section class="card composer">
         <h2>Buat Ucapan Baru</h2>
 
-        <input id="fromName" placeholder="Nama Anda" maxlength="50" />
+        <!-- fromName still editable but will be auto-filled when logged in -->
+        <input
+          id="fromName"
+          placeholder="Nama Anda (akan diisi otomatis jika login)"
+          maxlength="50"
+        />
+
         <textarea
           id="messageText"
           rows="4"
           placeholder="Tulis ucapanmu..."
         ></textarea>
 
-        <!-- Lagu via URL (direct) -->
         <label class="field">
           <span>Lagu (link mp3 / direct audio URL)</span>
           <input id="audioUrl" placeholder="https://.../song.mp3" />
           <button id="btnLoadAudio" type="button">Load & Preview</button>
           <audio id="previewAudio" controls class="hidden"></audio>
           <small class="hint"
-            >Link harus direct audio (mp3). YouTube tidak langsung didukung di
-            sini.</small
+            >Link harus direct audio (mp3). YouTube gunakan fitur
+            YouTube.</small
           >
         </label>
 
-        <!-- YouTube embed support -->
         <label class="field">
           <span>Tambahkan dari YouTube (embed)</span>
           <input
@@ -52,13 +90,8 @@
             Load YouTube Preview
           </button>
           <div id="youtubePreview" class="youtube-preview hidden"></div>
-          <small class="hint"
-            >Situs akan menyematkan player YouTube. Tidak
-            mengekstrak/men-download audio.</small
-          >
         </label>
 
-        <!-- Rekam suara -->
         <label class="field">
           <span>Rekam suara langsung</span>
           <div class="rec-row">
@@ -66,10 +99,8 @@
             <span id="recStatus" class="muted">Belum merekam</span>
           </div>
           <audio id="recordedPlay" controls class="hidden"></audio>
-          <small class="hint">Browser akan meminta izin mikrofon.</small>
         </label>
 
-        <!-- Upload foto -->
         <label class="field">
           <span>Unggah foto/thumbnail</span>
           <input id="photoInput" type="file" accept="image/*" />
@@ -84,9 +115,15 @@
           <button id="btnSend" class="primary">Kirim Ucapan</button>
           <button id="btnClear" class="ghost">Bersihkan</button>
         </div>
+
+        <div
+          id="linkBox"
+          class="muted hidden"
+          style="margin-top: 10px; word-break: break-all"
+        ></div>
       </section>
 
-      <!-- Daftar surat / pesan -->
+      <!-- Messages list -->
       <section class="card messages">
         <h2>Daftar Surat</h2>
         <div id="messagesList" class="messages-list"></div>
@@ -105,13 +142,13 @@
           </div>
           <div class="actions-msg">
             <button class="btnReply">Balas</button>
+            <button class="btnShare">Bagikan</button>
           </div>
         </header>
         <p class="text"></p>
         <div class="media">
           <img class="thumb hidden" alt="foto ucapan" />
           <audio class="audio hidden" controls></audio>
-          <!-- container for embedded YouTube player -->
           <div class="yt-container hidden"></div>
         </div>
         <div class="replies"></div>
