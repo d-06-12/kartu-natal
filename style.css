@@ -1,0 +1,242 @@
+/* Styling modern, animated, responsive */
+:root {
+  --bg1: #071127;
+  --card: #fff;
+  --accent: #ff6b6b;
+  --accent2: #6be4a6;
+  --glass: rgba(255, 255, 255, 0.06);
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Inter, Segoe UI, Arial;
+  background: linear-gradient(180deg, #0b1220 0%, #071127 60%);
+  color: #10212f;
+}
+.snow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(
+      circle at 10% 20%,
+      rgba(255, 255, 255, 0.12) 0 2px,
+      transparent 3px
+    ),
+    radial-gradient(
+      circle at 40% 60%,
+      rgba(255, 255, 255, 0.08) 0 2px,
+      transparent 3px
+    ),
+    radial-gradient(
+      circle at 70% 30%,
+      rgba(255, 255, 255, 0.09) 0 2px,
+      transparent 3px
+    );
+  animation: snowDrift 10s linear infinite;
+  opacity: 0.9;
+  mix-blend-mode: screen;
+}
+@keyframes snowDrift {
+  from {
+    background-position: 0 0, 0 0, 0 0;
+  }
+  to {
+    background-position: -1000px 800px, 600px 900px, 400px 1000px;
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 980px;
+  margin: 36px auto;
+  padding: 18px;
+}
+.hero {
+  text-align: center;
+  margin-bottom: 18px;
+}
+.hero h1 {
+  color: var(--accent);
+  font-size: 2.4rem;
+  margin: 0;
+  text-shadow: 0 6px 18px rgba(107, 60, 83, 0.25);
+}
+.hero .subtitle {
+  color: #dceff0;
+  margin-top: 6px;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 18px;
+  box-shadow: 0 8px 32px rgba(2, 6, 23, 0.6);
+}
+.composer input,
+.composer textarea,
+.composer .field input[type="file"],
+.composer .field input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #e6eef7;
+  margin-top: 8px;
+  background: transparent;
+}
+.composer textarea {
+  resize: vertical;
+}
+.field {
+  margin-top: 12px;
+}
+.rec-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.photo-preview {
+  max-width: 160px;
+  border-radius: 10px;
+  margin-top: 8px;
+  display: block;
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.15);
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+}
+.primary {
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  color: white;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 0;
+  cursor: pointer;
+}
+.ghost {
+  background: transparent;
+  border: 1px solid rgba(2, 6, 23, 0.06);
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.hint {
+  display: block;
+  color: #6b7280;
+  font-size: 12px;
+  margin-top: 6px;
+}
+.muted {
+  color: #85929d;
+  font-size: 13px;
+}
+
+/* Messages list */
+.messages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.message-item {
+  border-radius: 12px;
+  padding: 12px;
+  background: linear-gradient(180deg, #fff, #f7fbff);
+  box-shadow: 0 8px 24px rgba(7, 17, 34, 0.06);
+  animation: popIn 0.25s ease;
+}
+@keyframes popIn {
+  from {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+.message-item header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.message-item .meta {
+  display: flex;
+  flex-direction: column;
+}
+.message-item .time {
+  font-size: 12px;
+}
+.message-item .text {
+  margin: 10px 0;
+  color: #10212f;
+}
+.media {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.media img.thumb {
+  max-width: 160px;
+  border-radius: 8px;
+}
+.reply-box {
+  margin-top: 10px;
+}
+.reply-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+.btnReply,
+.btnSendReply,
+.btnCancelReply {
+  background: transparent;
+  border: 1px solid rgba(2, 6, 23, 0.06);
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.btnSendReply {
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  color: #fff;
+  border: 0;
+}
+
+/* YouTube preview / container styles */
+.youtube-preview,
+.yt-container {
+  margin-top: 10px;
+  width: 100%;
+  max-width: 560px;
+  aspect-ratio: 16/9;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.youtube-preview iframe,
+.yt-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .container {
+    padding: 12px;
+  }
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+  .media img.thumb {
+    max-width: 120px;
+  }
+}
